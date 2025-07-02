@@ -1,23 +1,23 @@
-//your JS code here. If required.
 document.getElementById("change_button").addEventListener("click", function () {
-  const blockId = document.getElementById("block_id").value;
-  const color = document.getElementById("colour_id").value;
+  const blockId = document.getElementById("block_id").value.trim();
+  const color = document.getElementById("colour_id").value.trim();
 
-  // First reset all colors
-  for (let i = 1; i <= 9; i++) {
-    document.getElementById(i).style.backgroundColor = "transparent";
+  // Reset all blocks
+  const items = document.getElementsByClassName("grid-item");
+  for (let item of items) {
+    item.style.backgroundColor = "transparent";
   }
 
-  // Then apply new color to selected block
+  // Apply new color only if valid blockId (1 to 9)
   const targetBlock = document.getElementById(blockId);
-  if (targetBlock) {
+  if (targetBlock && color) {
     targetBlock.style.backgroundColor = color;
   }
 });
 
 document.getElementById("Reset").addEventListener("click", function () {
-  // Reset all blocks to transparent
-  for (let i = 1; i <= 9; i++) {
-    document.getElementById(i).style.backgroundColor = "transparent";
+  const items = document.getElementsByClassName("grid-item");
+  for (let item of items) {
+    item.style.backgroundColor = "transparent";
   }
 });
